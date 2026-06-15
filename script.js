@@ -74,7 +74,12 @@ function deleteTransaction(index) {
 
     transactions.splice(index, 1);
 
-    saveData();
+    if (editIndex === index) {
+        clearInputs();
+    } else if (editIndex !== null && index < editIndex) {
+        editIndex--;
+    }
 
+    saveData();
     renderTransactions();
 }
