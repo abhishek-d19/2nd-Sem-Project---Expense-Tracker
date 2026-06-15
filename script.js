@@ -1,5 +1,8 @@
 /* Push 4 — Uttkarsh | Add transaction logic */
 const form = document.getElementById("transaction-form");
+const list = document.getElementById("transaction-list");
+
+let editIndex = null;
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -15,9 +18,39 @@ form.addEventListener("submit", (e) => {
     form.reset();
 });
 
-/* Push 5 — Alok | Edit transaction logic */
 
-let editIndex = null;
+// Push 7 - Sahil | Render Transaction
+function renderTransactions() {
+
+  list.innerHTML = "";
+
+  transactions.forEach((t, index) => {
+
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <span class="${t.type}">
+        ${t.desc} - ₹${t.amount.toFixed(2)}
+        (${t.type})
+      </span>
+
+      <span>
+        <button onclick="editTransaction(${index})">
+          Edit
+        </button>
+
+        <button onclick="deleteTransaction(${index})">
+          Delete
+        </button>
+      </span>
+    `;
+
+    list.appendChild(li);
+  });
+
+  updateSummary();
+}
+/* Push 5 — Alok | Edit transaction logic */
 
 function editTransaction(index) {
 
