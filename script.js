@@ -116,3 +116,14 @@ form.addEventListener("submit", (e) => {
 
   form.reset();
 });
+
+//Disha RAi
+let transactions =
+JSON.parse(localStorage.getItem("transactions")) || [];
+
+function saveData() {
+  localStorage.setItem(
+    "transactions",
+    JSON.stringify(transactions)
+  );
+}
