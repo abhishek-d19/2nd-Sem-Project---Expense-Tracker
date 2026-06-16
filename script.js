@@ -116,3 +116,24 @@ form.addEventListener("submit", (e) => {
 
   form.reset();
 });
+
+//bsp
+if (editIndex !== null) {
+
+  transactions[editIndex] = {
+    desc,
+    amount,
+    type
+  };
+
+  editIndex = null;
+
+} else {
+
+  transactions.push({
+    desc,
+    amount,
+    type
+  });
+
+}
