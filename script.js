@@ -126,6 +126,7 @@ function saveData() {
     "transactions",
     JSON.stringify(transactions)
   );
+}
 //Disha rai
 const cancelBtn =
 document.getElementById("cancel-btn");
@@ -141,3 +142,21 @@ function clearInputs() {
 
   editIndex = null;
 }
+
+// Update the summary
+function updateSummary() {
+  const income = transactions
+    .filter(t => t.type === "Income")
+    .reduce((sum, t) => sum + t.amount, 0);
+
+  const expense = transactions
+    .filter(t => t.type === "Expense")
+    .reduce((sum, t) => sum + t.amount, 0);
+
+  totalIncomeEl.textContent = income.toFixed(2);
+  totalExpenseEl.textContent = expense.toFixed(2);
+  balanceEl.textContent = (income - expense).toFixed(2);
+}
+
+// Initial render on page load
+renderTransactions();
