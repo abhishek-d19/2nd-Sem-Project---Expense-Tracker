@@ -106,7 +106,8 @@ function clearInputs() {
   editIndex = null;
 }
 
-// Sahil- Update the summary
+// abhi
+- Update the summary
 function updateSummary() {
   const income = transactions
     .filter(t => t.type === "Income")
